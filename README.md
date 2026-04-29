@@ -1,6 +1,14 @@
+
+
+
+
+
+
 # 🌸 MindBloom
 
 MindBloom is a mental health companion app that helps you track your mood, journal your thoughts, and get AI-powered insights.
+<video src="https://github.com/user-attachments/assets/f11cab3b-8a46-48a5-9c86-d8177bebf5fd" controls="controls" style="max-width: 100%;">
+</video>
 
 ## 🚀 Deployment Instructions
 
