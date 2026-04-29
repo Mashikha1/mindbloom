@@ -9,6 +9,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const morgan = require('morgan');
 const rateLimit = require('express-rate-limit');
+const path = require('path');
 require('dotenv').config();
 
 const app = express();
@@ -59,6 +60,18 @@ app.use('/api/journal',  journalRoutes);
 app.use('/api/ai',       aiRoutes);
 app.use('/api/insights', insightRoutes);
 app.use('/api/user',     userRoutes);
+
+// ─── SERVE FRONTEND IN PRODUCTION ─────────
+if (process.env.NODE_ENV === 'production') {
+  // Serve static files from the frontend build folder
+  app.use(express.static(path.join(__dirname, '../frontend/build')));
+
+  // Handle any routes that aren't API routes by serving index.html
+  app.get('*', (req, res, next) => {
+    if (req.url.startsWith('/api')) return next();
+    res.sendFile(path.resolve(__dirname, '../frontend', 'build', 'index.html'));
+  });
+}
 
 // ─── HEALTH CHECK ─────────────────────────
 // Visit http://localhost:5000/health to check if server is running
