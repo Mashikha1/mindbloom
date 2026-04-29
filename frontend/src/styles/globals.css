@@ -1,0 +1,111 @@
+/* ============================================
+   Global Styles — MindBloom
+   All CSS variables live here so every
+   component uses the same design tokens
+   ============================================ */
+
+:root {
+  --midnight:       #0d1117;
+  --deep:           #111827;
+  --surface:        #1a2235;
+  --card:           #1e2d42;
+  --card2:          #243347;
+  --border:         rgba(255,255,255,0.07);
+  --border-hover:   rgba(255,255,255,0.13);
+
+  --amber:          #f4a947;
+  --amber-soft:     rgba(244,169,71,0.15);
+  --amber-glow:     rgba(244,169,71,0.08);
+
+  --sage:           #7fb5a0;
+  --sage-soft:      rgba(127,181,160,0.15);
+
+  --rose:           #e07b8a;
+  --rose-soft:      rgba(224,123,138,0.15);
+
+  --lavender:       #9b8ec4;
+  --lavender-soft:  rgba(155,142,196,0.15);
+
+  --sky:            #6baed6;
+
+  --text:           #e8e4dd;
+  --text-soft:      rgba(232,228,221,0.6);
+  --text-faint:     rgba(232,228,221,0.3);
+
+  --font-display:   'Playfair Display', serif;
+  --font-body:      'DM Sans', sans-serif;
+  --font-hand:      'Caveat', cursive;
+
+  --radius-sm:  8px;
+  --radius-md:  14px;
+  --radius-lg:  20px;
+  --radius-xl:  28px;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--midnight);
+  color: var(--text);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--card2); border-radius: 2px; }
+
+/* Focus ring for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Global input reset */
+input, textarea, button, select {
+  font-family: var(--font-body);
+}
+
+button { cursor: pointer; border: none; background: none; }
+
+a { text-decoration: none; color: inherit; }
+
+/* Animations used across components */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1);    box-shadow: 0 0 12px rgba(244,169,71,0.15); }
+  50%       { transform: scale(1.08); box-shadow: 0 0 28px rgba(244,169,71,0.3);  }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-10px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+.fade-up   { animation: fadeUp   0.45s ease both; }
+.fade-in   { animation: fadeIn   0.3s  ease both; }
+.slide-in  { animation: slideIn  0.35s ease both; }
